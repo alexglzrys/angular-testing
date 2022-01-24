@@ -61,5 +61,5 @@ it('El nombre no tiene espacios en blanco al inicio y final')
 it('El nombre tiene caracteres válidos')
 
 // Expectativa de lo que se desa obtener tras realizar la prueba
-expect()
+expect(resultado).funcionVerbo('lo que se espera')
 ```
