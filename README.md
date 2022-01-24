@@ -63,3 +63,7 @@ it('El nombre tiene caracteres válidos')
 // Expectativa de lo que se desa obtener tras realizar la prueba
 expect(resultado).funcionVerbo('lo que se espera')
 ```
+
+#### ¿Que hacer si las pruebas fallan?
+- Lo primero es revisar que la prueba esté correctamente declarada, que sus datos de entrada sean los correctos (si aplica) para que el resultado que se desea obtener sea el correcto
+- Verificar que la función o método objetivo esté correctamente programado
