@@ -67,3 +67,14 @@ expect(resultado).funcionVerbo('lo que se espera')
 #### ¿Que hacer si las pruebas fallan?
 - Lo primero es revisar que la prueba esté correctamente declarada, que sus datos de entrada sean los correctos (si aplica) para que el resultado que se desea obtener sea el correcto
 - Verificar que la función o método objetivo esté correctamente programado
+
+#### Observar el % de cobertura de pruebas en nuestra aplicación
+Los frameworks de testing implementan algo que se les conoce como **code-coverage**, el cúal nos indica que tanto se a probado de la lógica declarada en una clase, funcion, método, etc.
+Lo ideal sería tener cubierto el 100% en cada una de las pruebas realizadas, pero todo depende del tiempo y recursos económicos destinados a dicho desarrollo.
+
+```
+ng test --code-coverage
+```
+
+El comando anterior genera una carpeta dentro de nuestra aplicación llamada **coverage**, la cual contiene un index.html con estadisticas interesantes sobre el porcentaje de cobertura de cada una de nuestras puebas.
+- Si una declaración no se encuentra al 100%, es posible que alguno de sus casos (lógica a evaluar) no este probado. **Una condición (IF-ELSE) que hasta el momento no se cumple con las pruebas actuales** 

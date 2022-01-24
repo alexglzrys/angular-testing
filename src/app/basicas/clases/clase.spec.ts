@@ -29,7 +29,7 @@ describe('Pruebas de clase', () => {
     expect(respuesta).toBe(50);
   });
 
-  it('Debe retornar 0 de HP si recibe golpe con poder de 250', () => {
+  it('Debe retornar 0 de HP si recibe golpe con poder de 100 o más de daño', () => {
     const respuesta = jugador.recibeGolpe(250);
     expect(respuesta).toBe(0);
   })
