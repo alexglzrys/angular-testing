@@ -46,3 +46,20 @@ xdescribe('AppComponent', () => {
     ...
 }
 ```
+
+#### Declarar pruebas automáticas
+- Crear un archivo para la declaración de pruebas con extensión **.spect.ts**
+- Por lo general, este archivo de pruebas se encuentra al lado del archivo que contiene la lógica, funciones o métodos a probar
+- string.ts (archivo con lógica), string.spec.ts (archivos de pruebas)
+```
+// Permite agrupar un conjunto de pruebas relacionadas
+describe('Pruebas realizadas al nombre de un usuario')
+
+// Son las pruebas a realizar
+it('EL nombre se encuentra en minúsculas');
+it('El nombre no tiene espacios en blanco al inicio y final')
+it('El nombre tiene caracteres válidos')
+
+// Expectativa de lo que se desa obtener tras realizar la prueba
+expect()
+```
