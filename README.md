@@ -38,14 +38,22 @@ ng test
 
 Las pruebas escritas dentro de estos archivos pueden ser de tipo: Unitaria, Integración, o End to End.
 
+Al lanzar las pruebas, se abre una sesión del navegador Web Chrome con el informe de todas las pruebas. Si deseamos obtener mayor información sobre mensajes de logs (escritos en cada prueba), es necesario seleccionar la opción **debug** y abrir la consola de desarrollo.
+
 #### Cancelar u omitir una prueba escrita
 - Ubicar el archivo donde esta declarada dicha prueba
-- anteponer una x en la función que describe dicha prueba
+- anteponer una x en la función que describe el conjunto de pruebas o prueba a omitir
 ```
-xdescribe('AppComponent', () => {
+xdescribe('AppComponent todas las pruebas saltadas', () => {
     ...
 }
+
+describe('AppComponent', () => {
+    it('Una prueba');
+    xit('Prueba específica saltada')
+}
 ```
+- Saltarse u omitir una prueba generalmente se hace cuando la lógica de dicha sección aun no esta lista, y las pruebas que se hicieron fue con data de ejemplo o harcodeada. En este sentido, cuando la lógica este lista, se retira el prefijo **x** y se procede a revisar si esa prueba o conjunto de ellas pasa.
 
 #### Declarar pruebas automáticas
 - Crear un archivo para la declaración de pruebas con extensión **.spect.ts**

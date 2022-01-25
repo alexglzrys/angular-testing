@@ -1,5 +1,7 @@
 import { impuestosAplicados } from './booleanos';
-describe('Pruebas aplicadas al archivo booleanos', () => {
+
+// Saltar todas las pruebas
+xdescribe('Pruebas aplicadas al archivo booleanos', () => {
 
     it('Debe retornan TRUE', () => {
         const respuesta = impuestosAplicados();
