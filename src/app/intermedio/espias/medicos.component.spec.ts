@@ -70,5 +70,31 @@ describe('MedicosComponent', () => {
     expect(componente.mensajeError).toBe(error);
   })
 
+  it('borrarMedico(3), debe llamar al servidor para borrar un médico con id 3', () => {
+    // Simular la confirmación del usuario (ver lógica componente window.confirm)
+    // ! Las pruebas unitarias o de intergración no deben tener interacción con el usuario
+    spyOn(window, 'confirm').and.returnValue(true);
+
+    // Simular el servicio que en el backend aun no esta terminado (no me interesa su respuesta por el momento, retorno un Onservable con valor vacío)
+    const espia = spyOn(servicio, 'borrarMedico').and.returnValue(EMPTY);
+
+    componente.borrarMedico('3');
+    // se espera que el espia se halla llamado con el prámetro 3
+    expect(espia).toHaveBeenCalledWith('3');
+  })
+
+
+  it('borrarMedico(3), NO debe llamar al servidor para borrar un médico con id 3, si el usuario cancela la confirmación', () => {
+    // Simular la cancelación del usuario en una ventana confirm - (ver lógica componente window.confirm)
+    // ! Las pruebas unitarias o de intergración no deben tener interacción con el usuario
+    spyOn(window, 'confirm').and.returnValue(false);
+
+    // Simular el servicio que en el backend aun no esta terminado (no me interesa su respuesta por el momento, retorno un Onservable con valor vacío)
+    const espia = spyOn(servicio, 'borrarMedico').and.returnValue(EMPTY);
+
+    componente.borrarMedico('3');
+    // se espera que el espia jamás se halla llamado, pues el usuario canceló la operación
+    expect(espia).not.toHaveBeenCalledWith('3');
+  })
 
 });
