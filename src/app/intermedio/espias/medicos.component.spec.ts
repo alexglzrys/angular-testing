@@ -1,4 +1,4 @@
-import { empty, from, of } from 'rxjs';
+import { EMPTY, empty, from, of, throwError } from 'rxjs';
 import { MedicosComponent } from './medicos.component';
 import { MedicosService } from './medicos.service';
 
@@ -36,7 +36,7 @@ describe('MedicosComponent', () => {
   it('agregarMedico(), debe llamar a un servicio en el backend para agregar un médico', () => {
     const espia = spyOn(servicio, 'agregarMedico').and.callFake(respuesta => {
       // Solo regreso un Observable vacío
-      return empty()
+      return EMPTY
     });
 
     componente.agregarMedico();
@@ -58,6 +58,17 @@ describe('MedicosComponent', () => {
     expect(componente.medicos.indexOf(medico)).toBeGreaterThanOrEqual(0);
 
   });
+
+
+  it('Si falla el registro de médicos en agregarMedico(), la propiedad mensajeError debe ser igual al error que emite el servicio', () => {
+    const error = 'No fue posible registrar el médico';
+    // Lanzar un error como valor de retorno en el espia
+    spyOn(servicio, 'agregarMedico').and.returnValue(throwError(() => error));
+
+    componente.agregarMedico();
+    // Se espera que la propiedad mensajeError sea identica al error lanzado en el servicio
+    expect(componente.mensajeError).toBe(error);
+  })
 
 
 });

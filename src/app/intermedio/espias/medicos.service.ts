@@ -18,7 +18,7 @@ export class MedicosService {
     return this.http.post<any>('...', medico ).pipe(
       map( resp => resp['medico'] ),
       catchError(err => {
-        throw 'No fue posible registrar el médido - ' + err
+        throw 'No fue posible registrar el médido'
       })
     );
   }
