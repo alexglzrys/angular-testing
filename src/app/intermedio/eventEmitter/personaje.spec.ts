@@ -5,7 +5,7 @@ describe('Pruebas EventEmitter en clase Personaje', () => {
   let personaje: Personaje
 
   // Generar una nueva instancia de Personaje antes de cada prueba (reset del objeto a su estado original)
-  beforeAll(() => personaje = new Personaje() );
+  beforeEach(() => personaje = new Personaje() );
 
   it('Debe emitir un evento personalizado con valor de 0 si el daño recibido es mayor o igual de 100', () => {
     let resultado = 0;
