@@ -65,4 +65,24 @@ describe('Incrementador Component', () => {
       expect(component.progreso).toBe(50);
     });
 
+    it('El titulo del componente debe mostrar el valor actual del progreso si se hace click en los botones', () => {
+      // Referencia a los botones
+      const buttons = fixture.debugElement.queryAll(By.css('.btn-primary'));
+      // Referencia al elemento de titulo
+      const el: HTMLElement = fixture.debugElement.query(By.css('h3')).nativeElement;
+
+      // Disparar el evento click para decrementar el progreso
+      buttons[0].triggerEventHandler('click', null);
+
+      // ? Disparar el detector de cambios para verificar que el HTML esta mostrando correctamente el valor actual
+      fixture.detectChanges();
+
+      expect(el.innerHTML).toContain('45');
+
+      // Disparar el evento click para incrementar el progreso
+      buttons[1].triggerEventHandler('click', null);
+      fixture.detectChanges();
+      expect(el.innerHTML).toContain('50');
+    });
+
 });
