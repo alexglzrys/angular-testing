@@ -49,4 +49,20 @@ describe('Incrementador Component', () => {
 
     });
 
+    it('Debe incrementar/decrementar el valor en 5, si se hace click en los botones', () => {
+      // Referencia a los botones
+      const buttons = fixture.debugElement.queryAll(By.css('.btn-primary'));
+
+      // Del arreglo anterior, el primer elemento hace referencia al boton de decrementar (por la posición que ocupa en el template)
+
+      // Disparar el evento click para decrementar el progreso
+      buttons[0].triggerEventHandler('click', null);
+      // ! No se requiere disparar el detector de eventos de Angular, ya que esta prueba está orientada a verificar el valor de una propiedad y no lo que contiene un elemento en la vista
+      expect(component.progreso).toBe(45);
+
+      // Disparar el evento click para incrementar el progreso
+      buttons[1].triggerEventHandler('click', null);
+      expect(component.progreso).toBe(50);
+    });
+
 });
