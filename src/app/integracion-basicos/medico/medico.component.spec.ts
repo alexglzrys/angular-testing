@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MedicoComponent } from './medico.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MedicosService } from '../services/medicos.service';
 
 describe('Médico Component', () => {
 
@@ -14,8 +16,8 @@ describe('Médico Component', () => {
     // * Es importante especificar los artefactos (modulos, componentes hijos, servicios, pipes) de los cuales depende el componente a testear (idéntico a la definición de un módulo)
     TestBed.configureTestingModule({
       declarations: [MedicoComponent],
-      // providers: [],   servicios
-      // imports: []      modulos compartidos
+      providers: [MedicosService],      // servicios
+      imports: [HttpClientModule]      // modulos compartidos o necesarios
     });
 
     // Una vez compilado el componente, obtenemos un Fixture, el cuál nos permite tener acceso a los elementos del DOM de dicho componente, así como al ciclo de vida o deteccióon de cambios - (similar a jQuery)
