@@ -3,7 +3,7 @@ import { MedicoComponent } from './medico.component';
 
 describe('Médico Component', () => {
 
-  // Una prueba de integración se parece a una prueba unitaria (describe - it)
+  // Una prueba de integración se parece a una prueba unitaria (describe - it - expect)
   // ! La diferencia radica en que el componente a testear, debe ser previamente compilado por Angular, para tener acceso a todos sus elementos internos (DOM), servicios, pipes, componentes hijos, etc.
 
   let component: MedicoComponent;
@@ -23,6 +23,18 @@ describe('Médico Component', () => {
     // La instancia del propio componente (tener acceso a sus propiedades y métodos)
     component = fixture.componentInstance;
 
-  })
+  });
+
+  it('Debe crearse el componente', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('Debe retornar el nombre del médico', () => {
+    const nombre = 'Alex';
+    // Invocar a un método definido en el componente
+    const response = component.saludarMedico(nombre);
+
+    expect(response).toContain(nombre);
+  });
 
 });
