@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable, EMPTY} from 'rxjs';
+import { Observable, EMPTY, Subject} from 'rxjs';
 
 import { ShowMedicoComponent } from './show-medico.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,8 +10,20 @@ class FakeRouter {
 }
 
 class FakeActivatedRoute {
-  // El objeto params en el servicio original es un observable
-  params: Observable<any> = EMPTY
+  //params: Observable<any> = EMPTY
+
+  // el objeto params es un observable en el servicio original
+  private subject = new Subject();
+
+  // Simular que el usuario navega a otra ruta, y esta se empuja en el router
+  push(value: any) {
+    this.subject.next(value);
+  }
+
+  // cuando se invoque a params se entregará un observable
+  get params() {
+    return this.subject.asObservable();
+  }
 }
 
 describe('ShowMedicoComponent', () => {
@@ -42,4 +54,11 @@ describe('ShowMedicoComponent', () => {
     component.saveMedico();
     expect(spy).toHaveBeenCalledWith(['medicos', '123']);
   });
+
+  it('Debe colocar el id = 123658', () => {
+    const activatedRouter: FakeActivatedRoute = TestBed.get(ActivatedRoute);
+    activatedRouter.push({id: '123658'});
+    expect(component.medicoId).toBe('123658');
+  });
+
 });
