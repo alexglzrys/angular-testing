@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from './integracion-basicos/incrementador/incrementador.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './integracion-intermedio/routes/app.routes';
+import { NavbarComponent } from './integracion-intermedio/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { routes } from './integracion-intermedio/routes/app.routes';
     MedicosComponent,
     MedicoComponent,
     HospitalComponent,
-    IncrementadorComponent
+    IncrementadorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
