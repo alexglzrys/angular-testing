@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HospitalComponent } from './integracion-basicos/hospital/hospital.component';
 import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from './integracion-basicos/incrementador/incrementador.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './integracion-intermedio/routes/app.routes';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { IncrementadorComponent } from './integracion-basicos/incrementador/incr
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
